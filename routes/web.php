@@ -2,10 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
-
-Route::get('/', function () {
-    return 'Olá, seja bem vindo!';
-});
+Route::get('/', 'PrincipalController@principal');
 
 Route::get('/sobre-nos', 'SobreNosController@sobreNos');
 
