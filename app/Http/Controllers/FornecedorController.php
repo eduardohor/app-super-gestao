@@ -17,7 +17,7 @@ class FornecedorController extends Controller
 			->where('site', 'like', "%$request->site%")
 			->where('uf', 'like', "%$request->uf%")
 			->where('email', 'like', "%$request->email%")
-			->paginate(2);
+			->paginate(3);
 
 			return view('app.fornecedor.listar', ['fornecedores' => $fornecedores, 'request' => $request->all()]);
 		}
@@ -73,5 +73,12 @@ class FornecedorController extends Controller
 			$fornecedor = Fornecedor::find($id);
 
 			return view('app.fornecedor.adicionar', ['fornecedor' => $fornecedor, 'msg' => $msg]);
+		}
+
+		public function excluir($id)
+		{
+			Fornecedor::find($id)->delete();
+
+			return redirect()->route('app.fornecedor');
 		}
 }
